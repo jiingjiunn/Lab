@@ -1,0 +1,4 @@
+Enter one corner of 1st rectangle: Enter opp corner of 1st rectangle: Enter one corner of 2nd rectangle: Enter opp corner of 2nd rectangle: Rectangle A = ([0.0, 0.0], [3.5, 3.5])
+Rectangle B = ([2.0, 1.5], [5.0, 5.0])
+Rectangles A and B overlap each other.
+Overlapped area = 3.00

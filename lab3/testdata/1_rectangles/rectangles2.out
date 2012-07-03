@@ -1,0 +1,4 @@
+Enter one corner of 1st rectangle: Enter opp corner of 1st rectangle: Enter one corner of 2nd rectangle: Enter opp corner of 2nd rectangle: Rectangle A = ([-6.3, -2.4], [3.5, 4.2])
+Rectangle B = ([-18.8, -7.2], [-6.3, 1.1])
+Rectangles A and B touch each other.
+Overlapped area = 0.00
