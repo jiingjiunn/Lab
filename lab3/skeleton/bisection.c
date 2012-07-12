@@ -12,6 +12,7 @@
 
 //prototype
 double polynomial(double, int, int, int, int);
+int decision (double pM, double a, double b);
 
 //instantiation
 int main(void)
@@ -33,8 +34,8 @@ int main(void)
         pA = polynomial(a, c3, c2, c1, c0);
         pB = polynomial(b, c3, c2, c1, c0);
         pM = polynomial(m, c3, c2, c1, c0);
-        printf(" \"#%d: a = %.4f; b = %.4f; m = %.4f p(a) = %.4f; p(b) = %.4f; p(m) = %.4f\n; p(b)-p(a) = %.4f\n",
-               i, a, b, m, pA, pB, pM, pB-pA);
+        printf(" \"#%d: a = %.4f; b = %.4f; m = %.4f p(a) = %.6f; p(b) = %.6f; p(m) = %.6f\n; b-a = %.4f\n",
+               i, a, b, m, pA, pB, pM, b-a);
 
         if(pM > 0){
             b = m;
@@ -42,7 +43,7 @@ int main(void)
             a = m;
         }
         i++;
-    }while((fabs(pM) >= STDERR));
+    }while(decision(pM, a, b));
 
     if(fabs(b - a) > STDERR){
         m = (a + b) / 2;
@@ -50,12 +51,22 @@ int main(void)
     }
 
     //printing of results
-	printf("root = %f\n", m);
-	printf("p(root) = %f\n", pM);
+	printf("root = %f.6\n", m);
+	printf("p(root) = %f.6\n", pM);
 
 	return 0;
 }
 
 double polynomial (double x, int c3, int c2, int c1, int c0){
     return c3 * pow(x, 3) + c2 * pow(x, 2) + c1 * x +c0;
+}
+
+int decision (double pM, double a, double b){
+    if(fabs(pM) < (STDERR)){
+        return 0;
+    }else if(fabs(b - a) < STDERR){
+        return 0;
+    }else{
+        return 1;
+    }
 }
