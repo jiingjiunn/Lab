@@ -28,7 +28,7 @@ int main(void)
 	pi = 4 * ((double)darts_inside / (double)darts_total) ;//calculation of pi based on darts that went in
 
 	printf("Darts landed inside the quadrant = %d\n", darts_inside);
-	printf("pi = %lf\n", pi);
+	printf("pi = %.4lf\n", pi);
 
     return 0;
 }
