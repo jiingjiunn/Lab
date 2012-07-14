@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <time.h>
 
 //prototypes
 int throwDarts(int);
@@ -36,9 +37,11 @@ int main(void)
 int throwDarts(int darts_total){
     int i, sum = 0;
     float x, y;
+
+    srand(time(NULL));
     for (i = 0; i < darts_total ; i++){
-        x = ((float)rand() / ((double)RAND_MAX ));
-        y = ((float)rand() / ((double)RAND_MAX ));
+        x = ((double)rand() / ((double)RAND_MAX ));
+        y = ((double)rand() / ((double)RAND_MAX ));
         if( (pow(x,2) + pow(y,2)) <= 1){
             sum++;
         }
