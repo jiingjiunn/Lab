@@ -17,7 +17,7 @@ int decision (double pM, double a, double b);
 //instantiation
 int main(void)
 {
-	int    c3, c2, c1, c0, i = 1; // coefficients of polynomial
+	int    c3, c2, c1, c0, i = 0; // coefficients of polynomial
 	double a, b,           // endpoints
 	       pA, pB;         // function values at endpoints
 	double m, pM;          // midpoint and function value at midpoint
@@ -45,7 +45,7 @@ int main(void)
     }while(decision(pM, a, b));
 
     //if the difference of a and b is greater that STDERR, get average m value
-    if(pM != 0 && fabs(a - b) > STDERR){
+    if(pM != 0){
         m = (a + b) / 2;
         pM = polynomial(m, c3, c2, c1, c0);
     }
