@@ -27,7 +27,7 @@ int main(void)
         scanf("%d", &temp);
         arr[i] = temp;
     }
-    printf("Estimated pi = %lf", pi(arr, size));
+    printf("Estimated pi = %.4lf", pi(arr, size));
 	return 0;
 }
 
@@ -39,7 +39,6 @@ double pi(int arr[], int size)
     for(i = 0 ; i < size ; i++){
         for(j = i+1 ; j < size ; j++){
             totalpair++;    //count numbers of pairs
-            printf("(%d,%d)\n", arr[i], arr[j]);
             if(gcd(arr[i], arr[j]) == 1){   //if the only common factor is 1
                 pair++;
             }
