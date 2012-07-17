@@ -44,6 +44,6 @@ double pi(int arr[], int size)
             }
         }
     }
-    return sqrt(6 * totalpair / pair);
+    return sqrt(6.0 * totalpair / pair);
 }
 

@@ -1,9 +1,9 @@
 /**
  * CS1010 AY2010/11 Semester 1 Lab4 Ex3
- * minesweeper.c 
- * <Type in description of program>
- * <Type your name here>
- * <Type your discussion group here>
+ * minesweeper.c
+ * Print the number of each grid in the mine sweeper game
+ * Tan Jiing Jiunn
+ * Seaweed
  */
 
 #include <stdio.h>
@@ -15,16 +15,27 @@
 #define L3_ROWS 16     // number of rows for level-3 grid
 #define L3_COLS 30     // number of columns for level-3 grid
 
+//prototypes
+void scan_mines(char grid[][L3_COLS+1], int rows);
+void printGridNumber(char grid[][L3_COLS+1], int rows, int cols);
+
+//instantiation
 int main(void)
 {
 	int level, rows, cols;
+	char grid[L3_ROWS][L3_COLS];
 	int rows_limit[3] = {L1_ROWS, L2_ROWS, L3_ROWS};
 	int cols_limit[3] = {L1_COLS, L2_COLS, L3_COLS};
 
-	scanf("%d\n", &level);
+    printf("Enter level:");
+	scanf("%d", &level);
 
 	rows = rows_limit[level-1];
 	cols = cols_limit[level-1];
+
+    printf("Please input mines position, input * for mine and input _ for empty place:\n");
+    scan_mines(grid, rows);
+    printGridNumber(grid, rows, cols);
 
     return 0;
 }
@@ -38,6 +49,28 @@ void scan_mines(char grid[][L3_COLS+1], int rows)
 	{
 		scanf("%s", grid[r]); // Alternatively: gets(grid[r])
 	}
+}
 
+//Display all the numbers
+void printGridNumber(char grid[][L3_COLS+1], int rows, int cols){
+    int i, j, number;
+    for (i = 0; i < rows ; i++){
+        for (j = 0; j < cols ; j++){
+            if(grid[i][j] == '*'){
+                printf("9 ");
+            }else{
+                number =( (grid[i-1][j-1] == '*')
+                        + (grid[i-1][j  ] == '*')
+                        + (grid[i-1][j+1] == '*')
+                        + (grid[i  ][j-1] == '*')
+                        + (grid[i  ][j+1] == '*')
+                        + (grid[i+1][j-1] == '*')
+                        + (grid[i+1][j  ] == '*')
+                        + (grid[i+1][j+1] == '*') );
+                printf("%d ", number);
+            }
+        }
+        printf("\n");
+    }
 }
 

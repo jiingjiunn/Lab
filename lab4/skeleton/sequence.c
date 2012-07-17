@@ -32,16 +32,16 @@ int main(void)
 // calculate maximum subsequence sum
 int maxSubseqSum(int arr[], int size)
 {
-	int i = 0, j = 0, subtotal = 0, temp = 0, max = 0;
+	int i = 0, j = 0, subtotal = 0, max = 0;
 	for(i = 0; i < size; i++){
-        subtotal = 0;
-        for(j = i; j < size; j++ ){
-            subtotal += arr[j];
-            if(subtotal > max){
-                max = subtotal;
-            }
+        subtotal += arr[i];
+        if(subtotal > max){
+            max = subtotal;
         }
-	}
+        if (subtotal < 0){
+            subtotal = 0;
+        }
+    }
 	return max;
 }
 
