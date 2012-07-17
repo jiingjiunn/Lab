@@ -10,12 +10,40 @@
 
 int main(void)
 {
-	int count;
+	int count = 0, start, end, i;
 
 	printf("Enter start and end: ");
+	scanf("%d %d", &start, &end);
+
+    for(i = start; i <= end; i++){
+        if(isPalindrome(i)){
+            count++;
+        }
+    }
 
 	printf("Number of palindrome numbers = %d\n", count);
 
 	return 0;
+}
+
+int isPalindrome(int n){
+    int arr[15];
+    int i = 0, size = 0;
+    while(n > 0){
+        arr[i] = n % 10;
+        n = n/10;
+        i++;
+        size = i-1;
+    }
+
+    for(i = 0; i <= size/2; i++){
+        if(arr[i] != arr[size-i]){
+            return 0;
+        }
+    }
+    for(i = 0; i <= size; i++)
+        printf("%d", arr[i]);
+    printf("\n");
+    return 1;
 }
 
