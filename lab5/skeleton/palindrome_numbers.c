@@ -33,8 +33,8 @@ int isPalindrome(int n){
         arr[i] = n % 10;
         n = n/10;
         i++;
-        size = i-1;
     }
+    size = i-1;
 
     for(i = 0; i <= size/2; i++){
         if(arr[i] != arr[size-i]){
