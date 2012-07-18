@@ -48,11 +48,11 @@ int isPalindrome(int n){
 
 //checking for palindrome by recursion
 int palindromeCheck(int arr[ARRLEN], int size){
-    if(arr[0] != arr[size]){
+    if(arr[0] != arr[size]){        //if compared pair is not the same, not palindrome
         return 0;
     }else if(size <= 1){
         return 1;
     }else{
-        return palindromeCheck(arr+1, size-2);
+        return palindromeCheck(arr+1, size-2); //trim off the 2 ends and continue on to check by calling itself
     }
 }
