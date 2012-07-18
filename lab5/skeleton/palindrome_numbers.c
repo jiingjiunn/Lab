@@ -1,13 +1,19 @@
 /**
  * CS1010 AY2011/2 Semester 1 Lab5 Ex1
  * palindrome_numbers.c
- * <Type in description of program>
- * <Type your name here>
- * <Type your discussion group here>
+ * Check if a program is palindrome
+ * Tan Jiing Jiunn
+ * Seaweed
  */
 
 #include <stdio.h>
+#define ARRLEN 15
 
+//prototype
+int isPalindrome(int n);
+int palindromeCheck(int arr[ARRLEN], int size);
+
+//instantiation
 int main(void)
 {
 	int count = 0, start, end, i;
@@ -26,8 +32,9 @@ int main(void)
 	return 0;
 }
 
+//scanning in numbers into array then call for checking function
 int isPalindrome(int n){
-    int arr[15];
+    int arr[ARRLEN];
     int i = 0, size = 0;
     while(n > 0){
         arr[i] = n % 10;
@@ -37,19 +44,10 @@ int isPalindrome(int n){
     size = i-1;
 
     palindromeCheck(arr, size);
-    /*
-    for(i = 0; i <= size/2; i++){
-        if(arr[i] != arr[size-i]){
-            return 0;
-        }
-    }
-    for(i = 0; i <= size; i++)
-        printf("%d", arr[i]);
-    printf("\n");
-    return 1;*/
 }
 
-int palindromeCheck(int arr[15], int size){
+//checking for palindrome by recursion
+int palindromeCheck(int arr[ARRLEN], int size){
     if(arr[0] != arr[size]){
         return 0;
     }else if(size <= 1){
