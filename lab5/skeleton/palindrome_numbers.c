@@ -36,6 +36,8 @@ int isPalindrome(int n){
     }
     size = i-1;
 
+    palindromeCheck(arr, size);
+    /*
     for(i = 0; i <= size/2; i++){
         if(arr[i] != arr[size-i]){
             return 0;
@@ -44,6 +46,15 @@ int isPalindrome(int n){
     for(i = 0; i <= size; i++)
         printf("%d", arr[i]);
     printf("\n");
-    return 1;
+    return 1;*/
 }
 
+int palindromeCheck(int arr[15], int size){
+    if(arr[0] != arr[size]){
+        return 0;
+    }else if(size <= 1){
+        return 1;
+    }else{
+        return palindromeCheck(arr+1, size-2);
+    }
+}
