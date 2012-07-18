@@ -1,9 +1,9 @@
 /**
  * CS1010 AY2011/2 Semester 1 Lab5 Ex3
  * mine_clusters.c
- * <Type in description of program>
- * <Type your name here>
- * <Type your discussion group here>
+ * To count the number of clusters in the mine field
+ * Tan Jiing Jiunn
+ * Seaweed
  */
 
 #include <stdio.h>
@@ -13,9 +13,11 @@
 #define MAX_ROWS 20  // maximum rows of a minefield
 #define MAX_COLS 40  // maximum columns of a minefield
 
+//prototypes
 void scan_minefield(char [][MAX_COLS+1], int *, int *);
 int clusterCheck(char mines[][MAX_COLS+1], int rsize, int csize );
 
+//instantiation
 int main(void)
 {
 	char minefield[MAX_ROWS][MAX_COLS+1];
@@ -40,6 +42,7 @@ void scan_minefield(char mines[][MAX_COLS+1],
 		gets(mines[r]);
 }
 
+//counts number of clusters in minefield
 int clusterCheck(char mines[][MAX_COLS+1], int rsize, int csize){
     int i = 0,j = 0;
     printf("%d %d\n", rsize, csize);
@@ -47,7 +50,7 @@ int clusterCheck(char mines[][MAX_COLS+1], int rsize, int csize){
         return 0;
     }else{
         for(i = 0 ; i < csize ; i++){
-            if((mines[rsize][i] == '*' &&
+            if((mines[rsize][i] == '*' &&               //condition to check if there is mine, there are no mines around it
                       (mines[rsize+1][i-1] != '*' &&
                        mines[rsize+1][i] != '*' &&
                        mines[rsize+1][i+1] != '*' &&
@@ -55,22 +58,6 @@ int clusterCheck(char mines[][MAX_COLS+1], int rsize, int csize){
                 j++;
             }
         }
-    return clusterCheck(mines, rsize-1, csize) + j;
+        return clusterCheck(mines, rsize-1, csize) + j;  //calls itself to go to the next row, then cumulative sum up cluster numbers
     }
-/*
-
-     if((*mines[rsize][csize] == '*' && (*mines[rsize+1][csize-1] == '*' || *mines[rsize+1][csize] == '*' || *mines[rsize+1][csize+1] == '*' || *mines[rsize][csize+1] == '*' )) ||
-       *mines[0][0] != '*' ){
-        printf("%c",*mines [0][0]);
-        return clusterCheck(mines, n-1) + 0;
-    }else if((*mines[rsize][csize] == '*' && (*mines[rsize+1][csize-1] != '*' &&
-                                              *mines[rsize+1][csize] != '*' &&
-                                              *mines[rsize+1][csize+1] != '*' &&
-                                              *mines[rsize][csize+1] != '*' )) ){
-        printf("%c",*mines [0][0]);
-        return clusterCheck(mines, n-1) + 1;
-    }else{
-        return 0;
-    }
-*/
 }
