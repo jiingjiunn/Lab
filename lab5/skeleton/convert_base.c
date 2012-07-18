@@ -12,6 +12,7 @@
 char digit(int);
 int changeBase(int n, int b);
 
+//instantiation
 int main(void)
 {
 	int value, base;
@@ -36,6 +37,7 @@ char digit(int d)
 		return (char) ((int) '0' + d);
 }
 
+//convert decimals to desired base
 int changeBase(int n, int b)
 {
     if(n == 0){
