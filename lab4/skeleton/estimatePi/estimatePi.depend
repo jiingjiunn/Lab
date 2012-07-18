@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1189868556 source:c:\users\jiing jiunn\documents\school\summer\cs1010\lab\lab4\skeleton\estimatepi\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1342424893 source:c:\users\jiing jiunn\documents\school\summer\cs1010\lab\lab4\skeleton\estimatepi.c
+	<stdio.h>
+	"gcd.h"
+	<math.h>
+
+1338446754 c:\users\jiing jiunn\documents\school\summer\cs1010\lab\lab4\skeleton\gcd.h
+
