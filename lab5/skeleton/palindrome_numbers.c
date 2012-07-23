@@ -11,7 +11,7 @@
 
 //prototype
 int isPalindrome(int n);
-int palindromeCheck(int arr[ARRLEN], int size);
+int palindromeCheck(int arr[ARRLEN], int, int);
 
 //instantiation
 int main(void)
@@ -32,6 +32,8 @@ int main(void)
 	return 0;
 }
 
+
+
 //scanning in numbers into array then call for checking function
 int isPalindrome(int n){
     int arr[ARRLEN];
@@ -43,16 +45,16 @@ int isPalindrome(int n){
     }
     size = i-1;
 
-    palindromeCheck(arr, size);
+    palindromeCheck(arr, 0, size);
 }
 
 //checking for palindrome by recursion
-int palindromeCheck(int arr[ARRLEN], int size){
-    if(arr[0] != arr[size]){        //if compared pair is not the same, not palindrome
+int palindromeCheck(int arr[ARRLEN],int left, int right){
+    if(arr[left] != arr[right]){        //if compared pair is not the same, not palindrome
         return 0;
-    }else if(size <= 1){
+    }else if(right-left<=1){
         return 1;
     }else{
-        return palindromeCheck(arr+1, size-2); //trim off the 2 ends and continue on to check by calling itself
+        return palindromeCheck(arr, left+1, right-1); //trim off the 2 ends and continue on to check by calling itself
     }
 }

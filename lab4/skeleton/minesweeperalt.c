@@ -17,13 +17,14 @@
 
 //prototypes
 void scan_mines(char grid[][L3_COLS+1], int rows);
-void printGridNumber(char grid[][L3_COLS+1], int rows, int cols);
+void printGridNumber(char grid[][L3_COLS+1], int numField[][L3_COLS], int rows, int cols);
 
 //instantiation
 int main(void)
 {
-	int level, rows, cols;
+	int level, rows, cols,i ,j;
 	char grid[L3_ROWS][L3_COLS+1];
+	int numField[L3_ROWS][L3_COLS];
 	int rows_limit[3] = {L1_ROWS, L2_ROWS, L3_ROWS};
 	int cols_limit[3] = {L1_COLS, L2_COLS, L3_COLS};
 
@@ -35,7 +36,18 @@ int main(void)
 
     printf("Please input mines position, input * for mine and input _ for empty place:\n");
     scan_mines(grid, rows);
-    printGridNumber(grid, rows, cols);
+	for (i = 0; i < rows ; i++){
+        for (j = 0; j < cols ; j++){
+            numField[i][j] = 0 ;
+        }
+    }
+	printGridNumber(grid, numField, rows, cols);
+	for(i = 0; i < rows; i++){
+		for(j = 0; j < cols; j++){
+			printf("%d ", numField[i][j]);
+		}
+		printf("\n");
+	}
 
     return 0;
 }
@@ -52,25 +64,28 @@ void scan_mines(char grid[][L3_COLS+1], int rows)
 }
 
 //Display all the numbers
-void printGridNumber(char grid[][L3_COLS+1], int rows, int cols){
+void printGridNumber(char grid[][L3_COLS+1], int numField[][L3_COLS], int rows, int cols){
     int i, j, number;
     for (i = 0; i < rows ; i++){
         for (j = 0; j < cols ; j++){
             if(grid[i][j] == '*'){
-                printf("9 ");
-            }else{
-                number =( (grid[i-1][j-1] == '*')
-                        + (grid[i-1][j  ] == '*')
-                        + (grid[i-1][j+1] == '*')
-                        + (grid[i  ][j-1] == '*')
-                        + (grid[i  ][j+1] == '*')
-                        + (grid[i+1][j-1] == '*')
-                        + (grid[i+1][j  ] == '*')
-                        + (grid[i+1][j+1] == '*') );
-                printf("%d ", number);
-            }
+				numField[i-1][j-1]++;
+				numField[i-1][j  ]++;
+				numField[i-1][j+1]++;
+                numField[i  ][j-1]++;
+                numField[i  ][j+1]++;
+				numField[i+1][j-1]++;
+				numField[i+1][j  ]++;
+				numField[i+1][j+1]++;
+			}
         }
-        printf("\n");
+    }
+    for (i = 0; i < rows ; i++){
+        for (j = 0; j < cols ; j++){
+            if(grid[i][j] == '*'){
+                numField[i][j] = 9 ;
+			}
+        }
     }
 }
 
