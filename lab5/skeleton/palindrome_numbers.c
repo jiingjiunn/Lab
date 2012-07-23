@@ -12,27 +12,28 @@
 //prototype
 int isPalindrome(int n);
 int palindromeCheck(int arr[ARRLEN], int, int);
+int sumPalindrome(int start, int end);
 
 //instantiation
 int main(void)
 {
-	int count = 0, start, end, i;
+	int start, end;
 
 	printf("Enter start and end: ");
 	scanf("%d %d", &start, &end);
-
-    for(i = start; i <= end; i++){
-        if(isPalindrome(i)){
-            count++;
-        }
-    }
-
-	printf("Number of palindrome numbers = %d\n", count);
+    printf("Number of palindrome numbers = %d\n", sumPalindrome(start, end));
 
 	return 0;
 }
 
-
+//using recursion to count the number of palindrom in the range start to end
+sumPalindrome(int start, int end){
+    if (start == end){
+        return isPalindrome(start);
+    }else{
+        return sumPalindrome(start+1, end) + isPalindrome(start);
+    }
+}
 
 //scanning in numbers into array then call for checking function
 int isPalindrome(int n){

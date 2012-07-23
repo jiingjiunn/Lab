@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1343031435 source:c:\users\jiing jiunn\documents\school\summer\cs1010\lab\lab5\skeleton\convert_base.c
+	<stdio.h>
+	<stdlib.h>
+
